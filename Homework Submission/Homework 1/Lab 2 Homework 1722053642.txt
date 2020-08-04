@@ -1,0 +1,7 @@
+The Process by which memory can be allocated to variables during the run time is called Dynamic Memory Allocation. 
+So, Dynamic memory allocation is the process of assigning the memory space during the execution time or the run time.
+When we do not know how much amount of memory would be needed for the program. We have to use dynamic allocation.
+The dynamic array is the array which are allocated memory at the runtime.
+We don't have to set the size of the array at compile time. 
+Dynamic array is the flexible because when we need to more element in array we can extend our array at runtime, 
+we can easily add or remove items from array.
