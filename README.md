@@ -120,10 +120,20 @@ This course provides an introduction to the fundamental concept of microprocesso
 </p>
 </br>
 
-## _Homework:_ (Submission <a href="https://github.com/NeloyNSU/CSE331L_Section_7_Summer_2020_NSU/tree/master/Homework%20Submission/Homework%201">Link</a>)
+## _Submission Links_:
 
+* _Homework:_ (Submission <a href="https://github.com/NeloyNSU/CSE331L_Section_7_Summer_2020_NSU/tree/master/Homework%20Submission/Homework%201">Link</a>)
 
-## _Lab Assessment:_ (Submission <a href="https://github.com/NeloyNSU/CSE331L_Section_7_Summer_2020_NSU/tree/master/Lab%20Asssessment%20Submission/Lab%20Assessment%201">Link</a>)
+* _Lab Assessment:_ (Submission <a href="https://github.com/NeloyNSU/CSE331L_Section_7_Summer_2020_NSU/tree/master/Lab%20Asssessment%20Submission/Lab%20Assessment%201">Link</a>)
+</br>
+
+## _Lab Resource_:
+
+* _Marks:_ (Updated <a href="https://github.com/aaneloy/CSE331L_Section_7_Summer_2020_NSU/blob/master/Marks/CSE331L_Section_7_Marks.pdf">Here</a>)
+* _Class Lecture_: https://github.com/aaneloy/CSE331L_Section_7_Summer_2020_NSU/tree/master/Slides
+* _Lab Code_: https://github.com/aaneloy/CSE331L_Section_7_Summer_2020_NSU/tree/master/Codes
+
+</br>
 
 ## _Project_ 
 <p align="justify">
