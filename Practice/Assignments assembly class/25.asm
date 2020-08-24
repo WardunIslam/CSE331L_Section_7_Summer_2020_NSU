@@ -1,0 +1,10 @@
+org 100h
+
+L1: NOP 
+
+L2: MOV AL, 0FFH
+    AND AL, 10101010B
+
+L3: HLT
+
+ret

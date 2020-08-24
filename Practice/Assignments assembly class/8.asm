@@ -1,0 +1,27 @@
+org 100h
+
+L1: NOP 
+
+L2: MOV AX, 0000H
+    MOV DS, AX
+    MOV BX, 0000H
+    MOV AL, BYTE PTR DS:[BX]
+    
+L3: MOV CX, 0000H
+    MOV DS, CX
+    MOV BX, 0001H
+    MOV AH, BYTE PTR DS:[BX]
+
+L4: CMP AL, AH
+
+L5: JA L7
+
+L6: MOV AL, AH
+    OUT 00H, AL
+    JMP L8
+    
+L7: OUT 00H, AL
+
+L8: HLT
+
+ret

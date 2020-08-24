@@ -1,0 +1,25 @@
+org 100h
+
+L1: NOP 
+
+L2: MOV AX, 0000H
+    MOV DS, AX
+    MOV BX, 0000H
+    MOV AL, BYTE PTR DS:[BX]
+
+L3: SHL AL, 01H
+
+L4: JC NEGETIVE
+
+POSITIVE: MOV AH, 02
+    MOV DL, 'P'
+    INT 21H
+    JMP L5
+    
+NEGETIVE: MOV AH, 02
+    MOV DL, 'N'
+    INT 21H
+
+L5: HLT
+
+ret
