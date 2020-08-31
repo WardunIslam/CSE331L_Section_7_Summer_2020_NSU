@@ -1,11 +1,6 @@
 org 100h
 
 L1: NOP
-        
-LINPUT: MOV AL, 01H
-		OUT 00H, AL
-		MOV AL, 02H
-		OUT 01H, AL
 
 L2: IN AL, 00H
     MOV AH, AL

@@ -11,7 +11,7 @@ L2: MOV AX, 0000H
     INC BX
     MOV AL, BYTE PTR DS:[BX]
     
-L4: MOV DX, 0000H
+L3: MOV DX, 0000H
     OUT DX, AL
     MOV AL, CL
     INC DX
@@ -20,6 +20,6 @@ L4: MOV DX, 0000H
     INC DX
     OUT DX, AL
 
-L6: HLT
+L4: HLT
     
 ret
