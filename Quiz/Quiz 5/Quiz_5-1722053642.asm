@@ -38,6 +38,7 @@
        INT 21H
        MOV AH, 02
        MOV DL, 'X'
+       INT 21H
        JMP @END  
        
 
