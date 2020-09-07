@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\led_keyboard_interface_code.obj" 
+TO ".\Objects\led_keyboard_interface_code" 
+PRINT(".\Listings\led_keyboard_interface_code.m51")

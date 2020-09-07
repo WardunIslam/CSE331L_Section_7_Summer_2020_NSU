@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\ultrasonic_code.obj" 
+TO ".\Objects\ultrasonic_code" 
+PRINT(".\Listings\ultrasonic_code.m51")

@@ -1,0 +1,171 @@
+C51 COMPILER V9.60.0.0   SERIAL_COM                                                        09/07/2020 15:09:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SERIAL_COM
+OBJECT MODULE PLACED IN .\Objects\serial_com.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE serial_com.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\serial_com.lst) TABS(2) OBJECT(.\Objects\serial_com.obj)
+
+line level    source
+
+   1          #include <REGX51.H>                 
+   2          
+   3          void cct_init(void);
+   4          
+   5          void SerialInitialize(void);
+   6          
+   7          void uart_msg(unsigned char *c);
+   8          
+   9          void uart_tx(unsigned char);  
+  10          
+  11          void delay(int);
+  12          
+  13          sbit E = P1^0;
+  14          
+  15          sbit RS = P1^1;
+  16          
+  17          void main()
+  18          
+  19          {
+  20   1        
+  21   1          cct_init();
+  22   1      
+  23   1          SerialInitialize();   
+  24   1      
+  25   1          EA = 1;
+  26   1      
+  27   1          ES = 1;
+  28   1      
+  29   1          uart_msg("Initializing Serial Communication");
+  30   1      
+  31   1                      uart_tx(0x0d);
+  32   1      
+  33   1                      uart_msg("1,2,3,4 key can on leds and a,b,c,d can off them respectively.");
+  34   1      
+  35   1                      uart_tx(0x0d);                                                   //next line
+  36   1      
+  37   1                      uart_msg("Press the key for particular LED");
+  38   1      
+  39   1                      uart_tx(0x0d);
+  40   1          
+  41   1          RS  = 0;
+  42   1          P2 = 0x38;
+  43   1          E = 1;
+  44   1          delay(150);
+  45   1          E = 0;
+  46   1          delay(150);
+  47   1          RS  = 0;
+  48   1          P2 = 0x0C;
+  49   1          E = 1;
+  50   1          delay(150);
+  51   1          E = 0;
+  52   1          delay(150);
+  53   1          RS  = 0;
+  54   1          P2 = 0x01;
+C51 COMPILER V9.60.0.0   SERIAL_COM                                                        09/07/2020 15:09:54 PAGE 2   
+
+  55   1          E = 1;
+  56   1          delay(150);
+  57   1          E = 0;
+  58   1          delay(150);
+  59   1          RS  = 0;
+  60   1          P2 = 0x80;
+  61   1          E = 1;
+  62   1          delay(150);
+  63   1          E = 0;
+  64   1          delay(150);
+  65   1          
+  66   1          RS = 1;
+  67   1          P2 = 'H';
+  68   1          E = 1;
+  69   1          delay(150);
+  70   1          E = 0;
+  71   1          delay(150);
+  72   1      
+  73   1          while(1);
+  74   1      
+  75   1      }
+  76          
+  77          
+  78          
+  79          
+  80          void cct_init(void)            //initialize cct
+  81          
+  82          {
+  83   1      
+  84   1          P0 = 0x00;                                        //not used
+  85   1      
+  86   1          P1 = 0x00;                                        //output port used for leds
+  87   1      
+  88   1          P2 = 0x00;                                        //not used
+  89   1      
+  90   1          P3 = 0x03;                                        //used for serial communication
+  91   1      
+  92   1      }
+  93          
+  94          
+  95          void SerialInitialize(void)       //Initialize Serial Port
+  96          
+  97          {
+  98   1      
+  99   1          TMOD = 0x20;                   //Timer 1 In Mode 2 -Auto Reload to Generate Baud Rate
+ 100   1      
+ 101   1          SCON = 0x50;                    //Serial Mode 1, 8-Data Bit, REN Enabled
+ 102   1      
+ 103   1          TH1 = 0xFD;                       //Load Baud Rate 9600 To Timer Register
+ 104   1      
+ 105   1          TR1 = 1;                              //Start Timer
+ 106   1      
+ 107   1      }
+ 108          
+ 109          void uart_msg(unsigned char *c)
+ 110          
+ 111          {
+ 112   1      
+ 113   1                      while(*c != 0)
+ 114   1      
+ 115   1                      {
+ 116   2      
+C51 COMPILER V9.60.0.0   SERIAL_COM                                                        09/07/2020 15:09:54 PAGE 3   
+
+ 117   2                                      uart_tx(*c++);
+ 118   2      
+ 119   2                      }
+ 120   1      
+ 121   1      }
+ 122          
+ 123          
+ 124          
+ 125          
+ 126          void uart_tx(unsigned char serialdata)
+ 127          
+ 128          {
+ 129   1      
+ 130   1          SBUF = serialdata;                        //Load Data to Serial Buffer Register
+ 131   1      
+ 132   1          while(TI == 0);                               //Wait Until Transmission To Complete
+ 133   1      
+ 134   1          TI = 0;                                                //Clear Transmission Interrupt Flag
+ 135   1      
+ 136   1      }
+ 137          
+ 138          
+ 139          void delay(int n){
+ 140   1        int i,j;
+ 141   1        for(i=0;i<n;i++)
+ 142   1        for(j=0;j<112;j++);
+ 143   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    231    ----
+   CONSTANT SIZE    =    130    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,65 @@
+C51 COMPILER V9.60.0.0   WATER                                                             09/07/2020 05:16:37 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WATER
+OBJECT MODULE PLACED IN .\Objects\water.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE water.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\wat
+                    -er.lst) TABS(2) OBJECT(.\Objects\water.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          sbit w_high = P1^0;
+   4          sbit w_high_mid = P1^1;
+   5          sbit w_low_mid = P1^2;
+   6          sbit w_low = P1^3;
+   7          
+   8          sbit E = P3^1;
+   9          sbit RS = P3^2;
+  10          sbit output = P3^0;
+  11          
+  12          void main(){
+  13   1        
+  14   1        P0 = 0x00;
+  15   1        P1 = 0x0F;
+  16   1        P2 = 0x00;
+  17   1        P3 = 0x00;
+  18   1        output = 0;
+  19   1        
+  20   1        while(1){
+  21   2            if(w_low == 1 && output == 0){
+  22   3              output = 1;
+  23   3            }
+  24   2            if(w_low == 0){
+  25   3              
+  26   3            }
+  27   2            if(w_low_mid == 0){
+  28   3              
+  29   3            }
+  30   2            if(w_high_mid == 0){
+  31   3              
+  32   3            }
+  33   2            if(w_high == 0){
+  34   3              
+  35   3            }
+  36   2            if(w_high == 0){
+  37   3              output = 0;
+  38   3            }
+  39   2        }
+  40   1      }
+  41          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     27    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

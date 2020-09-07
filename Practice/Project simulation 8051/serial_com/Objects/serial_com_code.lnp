@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\serial_com.obj" 
+TO ".\Objects\serial_com_code" 
+PRINT(".\Listings\serial_com_code.m51")

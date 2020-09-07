@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\water_level_code.obj" 
+TO ".\Objects\water_level_code" 
+PRINT(".\Listings\water_level_code.m51") RAMSIZE(64) 

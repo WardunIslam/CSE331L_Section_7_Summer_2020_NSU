@@ -1,0 +1,148 @@
+C51 COMPILER V9.60.0.0   ULTRASONIC_CODE                                                   09/07/2020 21:23:55 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ULTRASONIC_CODE
+OBJECT MODULE PLACED IN .\Objects\ultrasonic_code.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ultrasonic_code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Li
+                    -stings\ultrasonic_code.lst) TABS(2) OBJECT(.\Objects\ultrasonic_code.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include <stdlib.h>
+   3          #define port P2
+   4          #define dataport P0
+   5          int cms;
+   6          int y;
+   7          sbit trig=P3^5;
+   8          sbit rs=port^0;
+   9          sbit rw=port^1;
+  10          sbit e=port^2;
+  11          sbit x=P1^0;
+  12          void delay(unsigned int msec);
+  13          
+  14          
+  15          void lcd_cmd(unsigned char item) // Function to send command to LCD
+  16          {
+  17   1        dataport = item;
+  18   1        rs= 0;
+  19   1        rw=0;
+  20   1        e=1;
+  21   1        delay(1);
+  22   1        e=0;
+  23   1        return;
+  24   1      }
+  25          
+  26          void lcd_data(unsigned char item) // Function to send data to LCD
+  27          {
+  28   1        dataport = item;
+  29   1        rs= 1;
+  30   1        rw=0;
+  31   1        e=1;
+  32   1        delay(1);
+  33   1        e=0;
+  34   1        return;
+  35   1      }
+  36          
+  37          void lcd_data_string(unsigned char *str) // Function to send string to LCD
+  38          {
+  39   1        int i=0;
+  40   1        while(str[i]!='\0')
+  41   1         {
+  42   2          lcd_data(str[i]);
+  43   2          i++;
+  44   2          delay(1);
+  45   2         }
+  46   1      return;
+  47   1      }
+  48          void delay(unsigned int msec)
+  49          {
+  50   1        int i,j;
+  51   1        for(i=0;i<msec;i++)
+  52   1        for(j=0;j<1275;j++);
+  53   1      }
+  54          
+C51 COMPILER V9.60.0.0   ULTRASONIC_CODE                                                   09/07/2020 21:23:55 PAGE 2   
+
+  55          void send_pulse(void) 
+  56          {
+  57   1        TH0=0x00;TL0=0x00;
+  58   1        trig=1;                  //Sending trigger pulse
+  59   1        delay(5);                //Wait for about 10us
+  60   1        trig=0;                  //Turn off trigger
+  61   1      }
+  62          
+  63          unsigned int get_range(void)
+  64          {
+  65   1        long int timer_val;
+  66   1        send_pulse();
+  67   1        while(!INT0){
+  68   2          delay(y*2);
+  69   2          y++;
+  70   2          x=1;
+  71   2        }   //Waiting until echo pulse is detected
+  72   1        while(INT0){
+  73   2          delay(y);
+  74   2          x=0;
+  75   2        }//Waiting until echo pulse changes its state
+  76   1        timer_val=(TH0<<8)+TL0;
+  77   1        lcd_cmd(0x81);
+  78   1        lcd_data_string("output:");
+  79   1        lcd_cmd(0x8a);
+  80   1        if(timer_val<38000)
+  81   1         {
+  82   2          cms=timer_val/59;
+  83   2          if (cms!=0)
+  84   2           {
+  85   3            lcd_data(cms+48);
+  86   3           }
+  87   2         }
+  88   1        else
+  89   1        {
+  90   2         lcd_cmd(0x06);
+  91   2         lcd_data_string("Object out of range");
+  92   2        }
+  93   1        return cms;
+  94   1      }
+  95          
+  96          void main()
+  97          {
+  98   1        lcd_cmd(0x38);
+  99   1        lcd_cmd(0x0c);
+ 100   1        delay(2);
+ 101   1        lcd_cmd(0x01);
+ 102   1        delay(2);
+ 103   1        lcd_cmd(0x81);
+ 104   1        delay(2);
+ 105   1        lcd_data_string("start");
+ 106   1        delay(20);
+ 107   1        TMOD=0x09;//timer0 in 16 bit mode with gate enable
+ 108   1        TR0=1;//timer run enabled
+ 109   1        TH0=0x00;
+ 110   1        TL0=0x00;
+ 111   1        P3|=0x04;//setting pin P3.2
+ 112   1        lcd_cmd(0x81);
+ 113   1        lcd_data_string("output:");
+ 114   1        y=10;
+ 115   1        while(1)
+ 116   1        {
+C51 COMPILER V9.60.0.0   ULTRASONIC_CODE                                                   09/07/2020 21:23:55 PAGE 3   
+
+ 117   2         get_range();
+ 118   2         delay(2);
+ 119   2        }
+ 120   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    381    ----
+   CONSTANT SIZE    =     34    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
