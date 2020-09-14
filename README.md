@@ -156,10 +156,11 @@ This course provides an introduction to the fundamental concept of microprocesso
 * _Class Lecture_: https://github.com/aaneloy/CSE331L_Section_7_Summer_2020_NSU/tree/master/Slides
 * _Lab Code_: https://github.com/aaneloy/CSE331L_Section_7_Summer_2020_NSU/tree/master/Codes
 
-## _Project_ 
-<p align="justify">
-Will Update Later
-</p>
+## _Project_:
+
+* _Proteus Simulation:_ (<a href="https://drive.google.com/file/d/1bNFjYQLZiGAtlPBC_9fmlSWjQGc8MFOs/view">Class recording</a>)
+* _MikroC Coding:_ (<a href="https://drive.google.com/file/d/1tHtor7d5fYu7o-vdrzQT3sCoDRX8Nv1l/view">Class recording</a>)
+
 
 ## _Github Instructions:_
 <p align="justify">
