@@ -158,7 +158,8 @@ This course provides an introduction to the fundamental concept of microprocesso
 
 ## _Project_ 
 <p align="justify">
-Will Update Later
+* _Proteus Simulation:_ (<a href="https://drive.google.com/file/d/1bNFjYQLZiGAtlPBC_9fmlSWjQGc8MFOs/view">Class recording</a>)
+* _MikroC Coding:_ (<a href="https://drive.google.com/file/d/1tHtor7d5fYu7o-vdrzQT3sCoDRX8Nv1l/view">Class recording</a>)
 </p>
 
 ## _Github Instructions:_
